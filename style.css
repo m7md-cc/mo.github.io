@@ -451,65 +451,22 @@ grid-template-columns:1fr;
 height:250px;
 }
 
-}
-.social-links{
-display:flex;
-justify-content:center;
-gap:25px;
-flex-wrap:wrap;
-margin-top:40px;
-}
-
-.social-links a{
-width:180px;
-height:180px;
-background:rgba(255,255,255,.05);
-border:1px solid rgba(255,255,255,.08);
-border-radius:25px;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-decoration:none;
-color:#fff;
-transition:.4s;
-backdrop-filter:blur(15px);
-}
-
-.social-links a i{
-font-size:55px;
-margin-bottom:15px;
-color:#4CC9F0;
-}
-
-.social-links a span{
-font-size:20px;
-font-weight:700;
-}
-
-.social-links a:hover{
-transform:translateY(-10px) scale(1.05);
-border-color:#4CC9F0;
-box-shadow:0 0 25px rgba(76,201,240,.35);
-}
-
-@media(max-width:768px){
-
-.social-links a{
-width:140px;
-height:140px;
-}
-
-.social-links a i{
-font-size:42px;
-}
-
-.social-links a span{
-font-size:17px;
-}
-
 } 
 .cards .card{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:12px;
     text-decoration:none;
     color:white;
-} 
+}
+
+.cards .card i{
+    font-size:45px;
+    color:#4CC9F0;
+}
+
+.cards .card:hover i{
+    color:white;
+}
