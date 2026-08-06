@@ -113,47 +113,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // ================= Profile Scroll Animation =================
 
-
 window.addEventListener("scroll",()=>{
 
-
     const profile = document.querySelector(".hero-profile");
-
 
     if(!profile) return;
 
 
+    if(window.scrollY > 80){
 
-    let progress = window.scrollY / 350;
-
-
-    if(progress > 1){
-
-        progress = 1;
-
-    }
-
-
-
-    if(progress > 0.3){
-
-
-        profile.classList.add("scrolled");
-
+        profile.classList.add("move-left");
 
     }else{
 
-
-        profile.classList.remove("scrolled");
-
+        profile.classList.remove("move-left");
 
     }
 
 
-
 });
-
-
 
 
 
