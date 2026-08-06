@@ -40,14 +40,10 @@
 
 <li><a href="#home">الرئيسية</a></li>
 
-<li><a href="#about">من أنا</a></li>
-
-<li><a href="#social">Social Media</a></li>
-
-<li><a href="#projects">مشاريعي</a></li>
-
 <li><a href="#gallery">الصور</a></li>
-
+<li><a href="#about">من أنا</a></li>
+<li><a href="#social">Social Media</a></li>
+<li><a href="#projects">مشاريعي</a></li>
 <li><a href="#contact">تواصل</a></li>
 
 </ul>
@@ -58,9 +54,15 @@
 
 <section id="home" class="hero">
 
+<div class="hero-profile">
+
 <img class="profile-image" src="images/Picsart_26-07-31_17-35-29-535.jpg" alt="My Photo">
 
+<div class="hero-text">
 <h1 id="typing"></h1>
+</div>
+
+</div>
 
 <h2>ex. Sales Manager & Junior Graphic Designer</h2>
 
@@ -73,6 +75,24 @@
 <a href="#projects">أعمالي</a>
 
 <a href="#contact">تواصل معي</a>
+
+</div>
+
+</section>
+
+<!-- الصور أصبحت قبل من أنا -->
+
+<section id="gallery">
+
+<h2>الصور</h2>
+
+<div class="gallery">
+
+<img src="images/image1.jpg" onclick="openImage(this)" alt="Image 1">
+
+<img src="images/image2.jpg" onclick="openImage(this)" alt="Image 2">
+
+<img src="images/image3.jpg" onclick="openImage(this)" alt="Image 3">
 
 </div>
 
@@ -135,24 +155,8 @@ WhatsApp
 
 </section>
 
-<section id="gallery">
-
-<h2>الصور</h2>
-
-<div class="gallery">
-
-<img src="images/image1.jpg" onclick="openImage(this)">
-
-<img src="images/image2.jpg" onclick="openImage(this)">
-
-<img src="images/image3.jpg" onclick="openImage(this)">
-
-</div>
-
-</section>
-
 <div class="image-viewer" onclick="closeImage()">
-<img id="bigImage">
+<img id="bigImage" alt="Preview">
 </div>
 
 <section id="contact">
@@ -160,7 +164,7 @@ WhatsApp
 <h2>تواصل معي</h2>
 
 <p>
-قريبا. 
+قريبًا.
 </p>
 
 </section>
