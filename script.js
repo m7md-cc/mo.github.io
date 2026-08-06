@@ -74,7 +74,15 @@ window.addEventListener("scroll", () => {
     if (progress > 1) progress = 1;
 
     // تحريك المجموعة كلها
-    profile.style.transform = `translateX(${progress * 220}px)`;
+    if(progress > 0.3){
+
+    profile.classList.add("scrolled");
+
+}else{
+
+    profile.classList.remove("scrolled");
+
+    }
 
     // تصغير الصورة تدريجياً
     image.style.transform = `scale(${1 - progress * 0.35})`;
