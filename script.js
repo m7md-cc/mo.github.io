@@ -53,7 +53,7 @@ window.addEventListener("scroll", () => {
     }
 });
 // تأثير كتابة الاسم
-const text = "محمد";
+const text = "Mohamed Hassan";
 const typing = document.getElementById("typing");
 
 let i = 0;
