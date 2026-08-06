@@ -83,15 +83,7 @@ window.addEventListener("scroll", () => {
     profile.classList.remove("scrolled");
 
     }
-
-    // تصغير الصورة تدريجياً
-    image.style.transform = `scale(${1 - progress * 0.35})`;
-
-    // تقريب الاسم من الصورة
-    name.style.transform = `translateX(${progress * 15}px)`;
-
-});
-
+    
 
 // Mobile Menu
 function toggleMenu() {
