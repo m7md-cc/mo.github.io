@@ -71,3 +71,19 @@ function toggleLogo() {
     const logoText = document.getElementById("logoText");
     logoText.classList.toggle("logo-show");
 }
+function openImage(img){
+
+    let viewer = document.querySelector(".image-viewer");
+    let bigImage = document.getElementById("bigImage");
+
+    bigImage.src = img.src;
+    viewer.style.display = "flex";
+
+}
+
+
+function closeImage(){
+
+    document.querySelector(".image-viewer").style.display = "none";
+
+}
