@@ -509,3 +509,7 @@ font-size:17px;
 }
 
 } 
+.cards .card{
+    text-decoration:none;
+    color:white;
+} 
