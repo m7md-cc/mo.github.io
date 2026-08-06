@@ -1,54 +1,115 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>موقعي</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="style.css">
+<title>M7MD Studio</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+
 </head>
+
 <body>
 
-<div class="loader">
-    <span></span>
-</div>
+<div id="particles-js"></div>
 
 <header>
-    <nav>
-        <h2 class="logo">M7MD</h2>
 
-        <ul>
-            <li><a href="#">الرئيسية</a></li>
-            <li><a href="#">الخدمات</a></li>
-            <li><a href="#">الأعمال</a></li>
-            <li><a href="#">تواصل</a></li>
-        </ul>
-    </nav>
+<nav>
 
-    <section class="hero">
+<h2 class="logo">M7MD</h2>
 
-        <h1>مستقبل الويب يبدأ هنا</h1>
+<ul>
 
-        <p>
-            تصميم حديث مع تأثيرات وأنيميشن احترافية.
-        </p>
+<li><a href="#">الرئيسية</a></li>
 
-        <button>ابدأ الآن</button>
+<li><a href="#about">من نحن</a></li>
 
-    </section>
+<li><a href="#services">الخدمات</a></li>
+
+<li><a href="#contact">تواصل</a></li>
+
+</ul>
+
+</nav>
+
+<section class="hero">
+
+<h1>نصنع مواقع مستقبلية</h1>
+
+<p>
+
+تصميم احترافي، سرعة عالية، وأنيميشن مميزة.
+
+</p>
+
+<a href="#services" class="btn">
+
+ابدأ الآن
+
+</a>
+
+</section>
 
 </header>
 
-<div class="background">
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
+<section id="about" class="section">
+
+<h2>من نحن</h2>
+
+<p>
+
+نصمم مواقع حديثة باستخدام أحدث التقنيات.
+
+</p>
+
+</section>
+
+<section id="services" class="cards">
+
+<div class="card">
+
+<h3>تصميم UI/UX</h3>
+
+<p>واجهات احترافية.</p>
+
 </div>
+
+<div class="card">
+
+<h3>برمجة</h3>
+
+<p>HTML CSS JavaScript</p>
+
+</div>
+
+<div class="card">
+
+<h3>استضافة</h3>
+
+<p>GitHub Pages مجاناً.</p>
+
+</div>
+
+</section>
+
+<section id="contact" class="section">
+
+<h2<تواصل معي</h2>
+
+<button class="btn">
+
+إرسال رسالة
+
+</button>
+
+</section>
 
 <script src="script.js"></script>
 
