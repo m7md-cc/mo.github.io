@@ -1,63 +1,41 @@
-particlesJS("particles-js", {
-  particles: {
-    number: {
-      value: 80
-    },
-    color: {
-      value: "#9d4dff"
-    },
-    shape: {
-      type: "circle"
-    },
-    opacity: {
-      value: 0.5
-    },
-    size: {
-      value: 3
-    },
-    move: {
-      enable: true,
-      speed: 2
-    },
-    line_linked: {
-      enable: true,
-      color: "#9d4dff",
-      opacity: 0.3
-    }
-  },
-  interactivity: {
-    events: {
-      onhover: {
-        enable: true,
-        mode: "grab"
-      }
-    }
-  }
-});
+document.addEventListener("DOMContentLoaded", () => {
 
-gsap.from(".hero h1", {
-  y: -80,
-  opacity: 0,
-  duration: 1.2
-});
+    const hero = document.querySelector(".hero");
 
-gsap.from(".hero p", {
-  y: 50,
-  opacity: 0,
-  duration: 1.2,
-  delay: 0.3
-});
+    hero.style.opacity = "0";
+    hero.style.transform = "translateY(50px)";
 
-gsap.from(".btn", {
-  scale: 0,
-  duration: 1,
-  delay: 0.6
-});
+    setTimeout(() => {
+        hero.style.transition = "all 1.2s ease";
+        hero.style.opacity = "1";
+        hero.style.transform = "translateY(0)";
+    }, 300);
 
-gsap.from(".card", {
-  scrollTrigger: ".cards",
-  opacity: 0,
-  y: 80,
-  stagger: 0.2,
-  duration: 1
+    const cards = document.querySelectorAll(".card");
+
+    const observer = new IntersectionObserver((entries) => {
+
+        entries.forEach(entry => {
+
+            if(entry.isIntersecting){
+
+                entry.target.style.opacity = "1";
+                entry.target.style.transform = "translateY(0)";
+
+            }
+
+        });
+
+    }, {threshold:0.2});
+
+    cards.forEach(card => {
+
+        card.style.opacity = "0";
+        card.style.transform = "translateY(60px)";
+        card.style.transition = "0.8s ease";
+
+        observer.observe(card);
+
+    });
+
 });
