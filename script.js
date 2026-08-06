@@ -19,8 +19,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const text = "Mohamed Hassan";
 
     if (typing) {
-        typing.textContent = "";
 
+        typing.textContent = "";
         let i = 0;
 
         function type() {
@@ -39,10 +39,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
+
             if (entry.isIntersecting) {
                 entry.target.style.opacity = "1";
                 entry.target.style.transform = "translateY(0)";
             }
+
         });
     }, {
         threshold: 0.2
@@ -51,44 +53,59 @@ document.addEventListener("DOMContentLoaded", () => {
     cards.forEach(card => {
         card.style.opacity = "0";
         card.style.transform = "translateY(60px)";
-        card.style.transition = "0.8s ease";
+        card.style.transition = ".8s ease";
         observer.observe(card);
     });
 
 });
 
-// Profile Scroll
+
+// Smooth Profile Animation
 window.addEventListener("scroll", () => {
 
-    const img = document.querySelector(".profile-image");
+    const profile = document.querySelector(".hero-profile");
+    const image = document.querySelector(".profile-image");
+    const name = document.getElementById("typing");
 
-    if (!img) return;
+    if (!profile || !image || !name) return;
 
-    if (window.scrollY > 180) {
-        img.classList.add("move");
-    } else {
-        img.classList.remove("move");
-    }
+    let progress = window.scrollY / 350;
+
+    if (progress > 1) progress = 1;
+
+    // تحريك المجموعة كلها
+    profile.style.transform = `translateX(${progress * 220}px)`;
+
+    // تصغير الصورة تدريجياً
+    image.style.transform = `scale(${1 - progress * 0.35})`;
+
+    // تقريب الاسم من الصورة
+    name.style.transform = `translateX(${progress * 15}px)`;
 
 });
 
+
 // Mobile Menu
 function toggleMenu() {
+
     const menu = document.getElementById("menu");
+
     if (menu) {
         menu.classList.toggle("show");
     }
+
 }
+
 
 // Image Viewer
 function openImage(img) {
 
     const viewer = document.querySelector(".image-viewer");
-    const big = document.getElementById("bigImage");
+    const bigImage = document.getElementById("bigImage");
 
-    if (!viewer || !big) return;
+    if (!viewer || !bigImage) return;
 
-    big.src = img.src;
+    bigImage.src = img.src;
     viewer.style.display = "flex";
 
 }
