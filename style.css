@@ -306,3 +306,58 @@ opacity:0;
 .logo-show {
     display: block;
 } 
+@media (max-width: 768px) {
+
+    header nav {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+        padding: 0;
+    }
+
+    .hero {
+        padding: 40px 20px;
+        text-align: center;
+    }
+
+    .profile-image {
+        width: 220px;
+        height: 250px;
+    }
+
+    #typing {
+        font-size: 35px;
+        min-height: 60px;
+    }
+
+    .hero h2 {
+        font-size: 22px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .buttons a {
+        width: 80%;
+        text-align: center;
+    }
+
+    section {
+        padding: 40px 20px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+}
