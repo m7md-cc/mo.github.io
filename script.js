@@ -2,14 +2,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const hero = document.querySelector(".hero");
 
-    hero.style.opacity = "0";
-    hero.style.transform = "translateY(50px)";
+    if (hero) {
+        hero.style.opacity = "0";
+        hero.style.transform = "translateY(50px)";
 
-    setTimeout(() => {
-        hero.style.transition = "all 1.2s ease";
-        hero.style.opacity = "1";
-        hero.style.transform = "translateY(0)";
-    }, 300);
+        setTimeout(() => {
+            hero.style.transition = "all 1.2s ease";
+            hero.style.opacity = "1";
+            hero.style.transform = "translateY(0)";
+        }, 300);
+    }
+
 
     const cards = document.querySelectorAll(".card");
 
@@ -28,6 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }, {threshold:0.2});
 
+
     cards.forEach(card => {
 
         card.style.opacity = "0";
@@ -39,51 +43,104 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 });
+
+
+// تأثير الناف بار عند النزول
+
 window.addEventListener("scroll", () => {
+
     const nav = document.querySelector("nav");
 
-    if (window.scrollY > 50) {
-        nav.style.background = "rgba(9,9,15,.95)";
-        nav.style.boxShadow = "0 10px 30px rgba(76,201,240,.15)";
-        nav.style.padding = "15px 8%";
-    } else {
-        nav.style.background = "rgba(9,9,15,.75)";
-        nav.style.boxShadow = "none";
-        nav.style.padding = "20px 8%";
+    if(nav){
+
+        if (window.scrollY > 50) {
+
+            nav.style.background = "rgba(9,9,15,.95)";
+            nav.style.boxShadow = "0 10px 30px rgba(76,201,240,.15)";
+            nav.style.padding = "15px 8%";
+
+        } else {
+
+            nav.style.background = "rgba(9,9,15,.75)";
+            nav.style.boxShadow = "none";
+            nav.style.padding = "20px 8%";
+
+        }
+
     }
+
 });
+
+
 // تأثير كتابة الاسم
+
 const text = "Mohamed Hassan";
 const typing = document.getElementById("typing");
 
 let i = 0;
 
 function typeWriter() {
-    if (i < text.length) {
+
+    if (typing && i < text.length) {
+
         typing.textContent += text.charAt(i);
         i++;
+
         setTimeout(typeWriter, 180);
+
     }
+
 }
+
 
 window.addEventListener("load", typeWriter);
+
+
+
+// إظهار الاسم عند الضغط على M7MD
+
 function toggleLogo() {
+
     const logoText = document.getElementById("logoText");
-    logoText.classList.toggle("logo-show");
+
+    if(logoText){
+
+        logoText.classList.toggle("logo-show");
+
+    }
+
 }
+
+
+
+// تكبير الصور
+
 function openImage(img){
 
-    let viewer = document.querySelector(".image-viewer");
-    let bigImage = document.getElementById("bigImage");
+    const viewer = document.querySelector(".image-viewer");
+    const bigImage = document.getElementById("bigImage");
 
-    bigImage.src = img.src;
-    viewer.style.display = "flex";
+    if(viewer && bigImage){
+
+        bigImage.src = img.src;
+        viewer.style.display = "flex";
+
+    }
 
 }
 
+
+
+// إغلاق الصورة الكبيرة
 
 function closeImage(){
 
-    document.querySelector(".image-viewer").style.display = "none";
+    const viewer = document.querySelector(".image-viewer");
+
+    if(viewer){
+
+        viewer.style.display = "none";
+
+    }
 
 }
