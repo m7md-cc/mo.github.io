@@ -251,3 +251,23 @@ transform:translateY(-40px) translateX(30px) scale(1.2);
 }
 
 } 
+#typing{
+display:inline-block;
+min-height:90px;
+text-shadow:
+0 0 10px #7A1F3D,
+0 0 20px #4CC9F0,
+0 0 40px #4CC9F0;
+}
+
+#typing::after{
+content:"|";
+animation:blink .8s infinite;
+color:#4CC9F0;
+}
+
+@keyframes blink{
+50%{
+opacity:0;
+}
+}
