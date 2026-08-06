@@ -403,3 +403,30 @@ opacity:0;
     max-height: 90%;
     border-radius: 20px;
 }
+.menu-btn {
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+
+@media (max-width: 768px) {
+
+    .menu-btn {
+        display: block;
+    }
+
+
+    nav ul {
+        display: none;
+        flex-direction: column;
+        text-align: center;
+        width: 100%;
+    }
+
+
+    nav ul.show {
+        display: flex;
+    }
+
+} 
