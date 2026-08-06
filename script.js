@@ -52,3 +52,18 @@ window.addEventListener("scroll", () => {
         nav.style.padding = "20px 8%";
     }
 });
+// تأثير كتابة الاسم
+const text = "محمد";
+const typing = document.getElementById("typing");
+
+let i = 0;
+
+function typeWriter() {
+    if (i < text.length) {
+        typing.textContent += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, 180);
+    }
+}
+
+window.addEventListener("load", typeWriter);
