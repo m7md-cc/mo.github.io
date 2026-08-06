@@ -67,3 +67,7 @@ function typeWriter() {
 }
 
 window.addEventListener("load", typeWriter);
+function toggleLogo() {
+    const logoText = document.getElementById("logoText");
+    logoText.classList.toggle("logo-show");
+}
