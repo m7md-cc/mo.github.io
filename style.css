@@ -582,87 +582,153 @@ transform:translateY(-40px) translateX(30px) scale(1.2);
 
 .gallery{
 
-display:grid;
+    display:grid;
 
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    grid-template-columns:
+    repeat(auto-fit,minmax(260px,1fr));
 
-gap:35px;
+    gap:35px;
 
-margin-top:50px;
+    margin-top:50px;
 
 }
-
 
 
 .gallery img{
 
-width:100%;
+    width:100%;
 
-height:320px;
+    height:320px;
 
-object-fit:cover;
+    object-fit:cover;
 
-padding:8px;
+    padding:8px;
 
-background:rgba(255,255,255,.05);
+    background:rgba(255,255,255,.05);
 
-backdrop-filter:blur(15px);
+    backdrop-filter:blur(15px);
 
-border:2px solid rgba(76,201,240,.25);
+    border:2px solid rgba(76,201,240,.25);
 
-border-radius:25px;
+    border-radius:25px;
 
-box-shadow:
+    box-shadow:
+    0 0 15px rgba(76,201,240,.2),
+    0 0 35px rgba(122,31,61,.15);
 
-0 0 15px rgba(76,201,240,.2),
+    cursor:pointer;
 
-0 0 35px rgba(122,31,61,.15);
-
-cursor:pointer;
-
-transition:.5s ease;
+    transition:.5s ease;
 
 }
 
 
+/* ================= Gallery Rotation ================= */
 
 .gallery img:nth-child(1){
 
-transform:rotate(-4deg);
+    transform:rotate(-4deg);
 
 }
 
 
 .gallery img:nth-child(2){
 
-transform:rotate(3deg);
+    transform:rotate(3deg);
 
 }
 
 
 .gallery img:nth-child(3){
 
-transform:rotate(-2deg);
+    transform:rotate(-2deg);
 
 }
 
 
+/* ================= Gallery Hover ================= */
 
 .gallery img:hover{
 
-transform:scale(1.08) rotate(0deg);
+    transform:scale(1.08) rotate(0deg);
 
-border-color:#4CC9F0;
+    border-color:#4CC9F0;
 
-box-shadow:
+    box-shadow:
 
-0 0 25px #4CC9F0,
+    0 0 25px #4CC9F0,
 
-0 0 50px rgba(76,201,240,.45),
+    0 0 50px rgba(76,201,240,.45),
 
-0 0 80px rgba(122,31,61,.35);
+    0 0 80px rgba(122,31,61,.35);
 
 }
+
+
+/* ================= Mobile Gallery ================= */
+
+@media(max-width:768px){
+
+    .gallery{
+
+        grid-template-columns:1fr;
+
+        gap:25px;
+
+        margin-top:35px;
+
+    }
+
+
+    .gallery img{
+
+        width:100%;
+
+        height:280px;
+
+        object-fit:cover;
+
+        padding:6px;
+
+        border-radius:22px;
+
+        border:2px solid rgba(76,201,240,.35);
+
+        box-shadow:
+
+        0 0 15px rgba(76,201,240,.18),
+
+        0 10px 30px rgba(0,0,0,.35);
+
+        transform:none !important;
+
+        transition:
+
+        transform .3s ease,
+
+        box-shadow .3s ease,
+
+        border-color .3s ease;
+
+    }
+
+
+    .gallery img:active{
+
+        transform:scale(.97) !important;
+
+        border-color:#4CC9F0;
+
+        box-shadow:
+
+        0 0 20px rgba(76,201,240,.45),
+
+        0 10px 35px rgba(0,0,0,.45);
+
+    }
+
+}
+
 
 
 /* ================= Image Viewer ================= */
