@@ -99,14 +99,16 @@ nav a:hover{
     display:flex;
     flex-direction:column;
     align-items:center;
+    justify-content:center;
+
     gap:20px;
 
     width:100%;
     max-width:100%;
 
     transition:
-        flex-direction .35s ease,
-        gap .35s ease,
+        flex-direction .5s ease,
+        gap .5s ease,
         transform .7s cubic-bezier(.22,1,.36,1);
 
     will-change:transform;
@@ -284,7 +286,8 @@ nav a:hover{
 
 .buttons a:hover{
     transform:translateY(-5px);
-    }
+}
+
 
 /* ================= Sections ================= */
 
@@ -463,6 +466,7 @@ section h2{
 
 }
 
+
 /* ================= Gallery ================= */
 
 .gallery{
@@ -590,7 +594,8 @@ section h2{
         opacity:1;
     }
 
-                      }
+}
+
 
 /* ================= Contact WhatsApp ================= */
 
@@ -859,8 +864,8 @@ section h2{
             0 0 25px #4CC9F0,
             0 0 45px rgba(76,201,240,.35);
     }
+}
 
-    }
 
 /* ================= Mobile ================= */
 
@@ -910,8 +915,7 @@ section h2{
         width:100%;
         max-width:100vw;
 
-        padding:
-            100px 15px 40px;
+        padding:100px 15px 40px;
 
         height:auto;
         min-height:100vh;
@@ -920,15 +924,24 @@ section h2{
     }
 
 
+    /* ================= Profile Normal ================= */
+
     .hero-profile{
         width:100%;
         max-width:100%;
 
+        display:flex;
+
         flex-direction:column;
+
+        align-items:center;
+        justify-content:center;
 
         gap:15px;
 
         box-sizing:border-box;
+
+        transform:none;
     }
 
 
@@ -939,49 +952,60 @@ section h2{
         width:100%;
         max-width:100%;
 
-        flex-direction:row;
+        display:flex;
+
+        /*
+        الصورة على اليمين
+        والاسم بجانبها
+        */
+
+        flex-direction:row-reverse;
 
         justify-content:center;
         align-items:center;
 
-        gap:8px;
+        gap:10px;
 
-        /*
-        حركة بسيطة تمنع خروج المحتوى
-        خارج الشاشة
-        */
+        transform:none;
 
-        transform:translateX(-10px);
+        overflow:visible;
     }
 
 
+    /* ================= Image After Scroll ================= */
+
     .hero-profile.move-left .profile-image{
 
-        width:80px;
-        height:95px;
+        width:82px;
+        height:100px;
 
-        min-width:80px;
-        max-width:80px;
+        min-width:82px;
+        max-width:82px;
 
         flex-shrink:0;
 
         border-width:3px;
 
         border-radius:18px;
+
+        object-fit:cover;
     }
 
 
+    /* ================= Name After Scroll ================= */
+
     .hero-profile.move-left h1{
 
-        font-size:clamp(18px,5.5vw,24px);
+        font-size:clamp(17px,5.5vw,24px);
 
         width:auto;
 
-        max-width:calc(100vw - 115px);
+        max-width:calc(100vw - 125px);
 
         min-width:0;
 
         margin:0;
+        padding:0;
 
         line-height:1.2;
 
@@ -991,14 +1015,20 @@ section h2{
 
         text-overflow:clip;
 
-        flex-shrink:1;
+        flex:1;
     }
 
+
+    /* ================= Typing ================= */
 
     #typing{
         min-height:50px;
 
         max-width:100%;
+
+        display:block;
+
+        overflow:hidden;
     }
 
 
@@ -1016,6 +1046,8 @@ section h2{
     .hero p{
         width:100%;
         max-width:100%;
+
+        overflow-wrap:break-word;
     }
 
 
@@ -1114,8 +1146,7 @@ section h2{
 
         width:250px;
 
-        max-width:
-            calc(100vw - 36px);
+        max-width:calc(100vw - 36px);
     }
 
-        }
+    }
