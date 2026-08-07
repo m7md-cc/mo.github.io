@@ -187,6 +187,39 @@ document.addEventListener("DOMContentLoaded", () => {
         music.volume=.5;
 
 
+// ================= Auto Play Music =================
+
+if (music) {
+
+    music.volume = 0.5;
+
+    music.play()
+    .then(() => {
+
+        if(widget){
+            widget.classList.add("playing");
+        }
+
+        if(play){
+            play.innerHTML =
+            '<i class="fas fa-pause"></i>';
+        }
+
+        if(status){
+            status.textContent = "يعمل الآن";
+        }
+
+    })
+    .catch(() => {
+
+        if(status){
+            status.textContent = "اضغط تشغيل";
+        }
+
+    });
+
+}
+        
 
         window.toggleMusic=function(){
 
