@@ -122,6 +122,94 @@ window.addEventListener("scroll",()=>{
 
     if(window.scrollY > 80){
 
+        profile.classList.add("scrolled");
+
+    }else{
+
+        profile.classList.remove("scrolled");
+
+    }
+
+
+});
+
+
+
+
+
+// ================= Mobile Menu =================
+
+
+function toggleMenu(){
+
+
+    const menu = document.getElementById("menu");
+
+
+    if(menu){
+
+        menu.classList.toggle("show");
+
+    }
+
+
+}
+
+
+
+
+
+// ================= Image Viewer =================
+
+
+function openImage(img){
+
+
+    const viewer = document.querySelector(".image-viewer");
+
+    const bigImage = document.getElementById("bigImage");
+
+
+    if(!viewer || !bigImage) return;
+
+
+
+    bigImage.src = img.src;
+
+
+    viewer.style.display="flex";
+
+
+}
+
+
+
+
+function closeImage(){
+
+
+    const viewer = document.querySelector(".image-viewer");
+
+
+    if(viewer){
+
+        viewer.style.display="none";
+
+    }
+
+
+}
+// ================= Profile Scroll Animation =================
+
+window.addEventListener("scroll",()=>{
+
+    const profile = document.querySelector(".hero-profile");
+
+    if(!profile) return;
+
+
+    if(window.scrollY > 80){
+
         profile.classList.add("move-left");
 
     }else{
