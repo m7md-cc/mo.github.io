@@ -1,287 +1,286 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+// ================= Hero Animation =================
 
-    // ================= Hero Animation =================
+const hero = document.querySelector(".hero");
 
-    const hero = document.querySelector(".hero");
+if (hero) {
 
-    if (hero) {
+    hero.style.opacity = "0";
+    hero.style.transform = "translateY(50px)";
 
-        hero.style.opacity = "0";
-        hero.style.transform = "translateY(50px)";
+    setTimeout(() => {
 
-        setTimeout(() => {
+        hero.style.transition = "all 1.2s ease";
+        hero.style.opacity = "1";
+        hero.style.transform = "translateY(0)";
 
-            hero.style.transition = "all 1.2s ease";
-            hero.style.opacity = "1";
-            hero.style.transform = "translateY(0)";
+    }, 300);
 
-        }, 300);
+}
+
+
+// ================= Typing Effect =================
+
+const typing = document.getElementById("typing");
+const text = "Mohamed Hassan";
+
+if (typing) {
+
+    typing.textContent = "";
+
+    let i = 0;
+
+    function type() {
+
+        if (i < text.length) {
+
+            typing.textContent += text.charAt(i);
+
+            i++;
+
+            setTimeout(type, 120);
+
+        }
 
     }
 
+    type();
+
+}
 
 
-    // ================= Typing Effect =================
+// ================= Cards Animation =================
 
-    const typing = document.getElementById("typing");
-    const text = "Mohamed Hassan";
+const cards = document.querySelectorAll(".card");
+
+const observer = new IntersectionObserver((entries) => {
+
+    entries.forEach(entry => {
+
+        if (entry.isIntersecting) {
+
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
+
+        }
+
+    });
+
+}, {
+
+    threshold: 0.2
+
+});
 
 
-    if (typing) {
+cards.forEach(card => {
 
-        typing.textContent = "";
+    card.style.opacity = "0";
+    card.style.transform = "translateY(60px)";
+    card.style.transition = ".8s ease";
 
-        let i = 0;
+    observer.observe(card);
+
+});
 
 
-        function type(){
+// ================= Music Player =================
 
-            if(i < text.length){
+const music = document.getElementById("bgMusic");
+const musicWidget = document.querySelector(".music-widget");
+const musicPlay = document.getElementById("musicPlay");
+const musicProgress = document.getElementById("musicProgress");
+const musicStatus = document.getElementById("musicStatus");
 
-                typing.textContent += text.charAt(i);
 
-                i++;
+if (music && musicWidget && musicPlay && musicProgress) {
 
-                setTimeout(type,120);
 
+    // محاولة تشغيل الأغنية تلقائيًا
+
+    music.volume = 0.5;
+
+    const autoPlayMusic = () => {
+
+        music.play().then(() => {
+
+            musicWidget.classList.add("playing");
+
+            musicPlay.innerHTML =
+                '<i class="fas fa-pause"></i>';
+
+            if (musicStatus) {
+                musicStatus.textContent = "يعمل الآن";
+            }
+
+        }).catch(() => {
+
+            // المتصفح منع التشغيل التلقائي
+
+            if (musicStatus) {
+                musicStatus.textContent = "اضغط تشغيل";
+            }
+
+        });
+
+    };
+
+
+    autoPlayMusic();
+
+
+    // تشغيل / إيقاف
+
+    window.toggleMusic = function () {
+
+        if (music.paused) {
+
+            music.play();
+
+            musicWidget.classList.add("playing");
+
+            musicPlay.innerHTML =
+                '<i class="fas fa-pause"></i>';
+
+            if (musicStatus) {
+                musicStatus.textContent = "يعمل الآن";
+            }
+
+        } else {
+
+            music.pause();
+
+            musicWidget.classList.remove("playing");
+
+            musicPlay.innerHTML =
+                '<i class="fas fa-play"></i>';
+
+            if (musicStatus) {
+                musicStatus.textContent = "متوقف";
             }
 
         }
 
-
-        type();
-
-    }
+    };
 
 
+    // تحديث شريط التقدم
 
+    music.addEventListener("timeupdate", () => {
 
-    // ================= Cards Animation =================
+        if (!music.duration) return;
 
-    const cards = document.querySelectorAll(".card");
-
-
-    const observer = new IntersectionObserver((entries)=>{
-
-
-        entries.forEach(entry=>{
-
-
-            if(entry.isIntersecting){
-
-                entry.target.style.opacity="1";
-
-                entry.target.style.transform="translateY(0)";
-
-            }
-
-
-        });
-
-
-    },{
-
-        threshold:0.2
+        musicProgress.value =
+            (music.currentTime / music.duration) * 100;
 
     });
 
 
+    // التحكم من شريط التقدم
 
-    cards.forEach(card=>{
+    musicProgress.addEventListener("input", () => {
 
+        if (!music.duration) return;
 
-        card.style.opacity="0";
-
-        card.style.transform="translateY(60px)";
-
-        card.style.transition=".8s ease";
-
-
-        observer.observe(card);
-
+        music.currentTime =
+            (musicProgress.value / 100) * music.duration;
 
     });
 
 
+    // عند انتهاء الأغنية
+
+    music.addEventListener("ended", () => {
+
+        musicWidget.classList.remove("playing");
+
+        musicPlay.innerHTML =
+            '<i class="fas fa-play"></i>';
+
+        if (musicStatus) {
+            musicStatus.textContent = "متوقف";
+        }
+
+    });
+
+}
 
 });
-
-
-
-
 
 // ================= Profile Scroll Animation =================
 
-window.addEventListener("scroll",()=>{
+window.addEventListener("scroll", () => {
 
-    const profile = document.querySelector(".hero-profile");
+const profile = document.querySelector(".hero-profile");
 
-    if(!profile) return;
+if (!profile) return;
 
 
-    if(window.scrollY > 80){
+if (window.scrollY > 80) {
 
-        profile.classList.add("scrolled");
+    profile.classList.add("move-left");
 
-    }else{
+} else {
 
-        profile.classList.remove("scrolled");
+    profile.classList.remove("move-left");
 
-    }
-
+}
 
 });
 
-
-
-
-
 // ================= Mobile Menu =================
 
+function toggleMenu() {
 
-function toggleMenu(){
+const menu = document.getElementById("menu");
 
+if (menu) {
 
-    const menu = document.getElementById("menu");
-
-
-    if(menu){
-
-        menu.classList.toggle("show");
-
-    }
-
+    menu.classList.toggle("show");
 
 }
 
+}
 
+// ================= Music Widget =================
 
+function toggleMusicWidget() {
 
+const widget = document.querySelector(".music-widget");
+
+if (widget) {
+
+    widget.classList.toggle("open");
+
+}
+
+}
 
 // ================= Image Viewer =================
 
+function openImage(img) {
 
-function openImage(img){
+const viewer = document.querySelector(".image-viewer");
+const bigImage = document.getElementById("bigImage");
 
-
-    const viewer = document.querySelector(".image-viewer");
-
-    const bigImage = document.getElementById("bigImage");
-
-
-    if(!viewer || !bigImage) return;
+if (!viewer || !bigImage) return;
 
 
+bigImage.src = img.src;
 
-    bigImage.src = img.src;
-
-
-    viewer.style.display="flex";
-
+viewer.style.display = "flex";
 
 }
 
+function closeImage() {
 
+const viewer = document.querySelector(".image-viewer");
 
+if (viewer) {
 
-function closeImage(){
-
-
-    const viewer = document.querySelector(".image-viewer");
-
-
-    if(viewer){
-
-        viewer.style.display="none";
-
-    }
-
+    viewer.style.display = "none";
 
 }
-// ================= Profile Scroll Animation =================
-
-window.addEventListener("scroll",()=>{
-
-    const profile = document.querySelector(".hero-profile");
-
-    if(!profile) return;
-
-
-    if(window.scrollY > 80){
-
-        profile.classList.add("move-left");
-
-    }else{
-
-        profile.classList.remove("move-left");
-
-    }
-
-
-});
-
-
-
-// ================= Mobile Menu =================
-
-
-function toggleMenu(){
-
-
-    const menu = document.getElementById("menu");
-
-
-    if(menu){
-
-        menu.classList.toggle("show");
-
-    }
-
-
-}
-
-
-
-
-
-// ================= Image Viewer =================
-
-
-function openImage(img){
-
-
-    const viewer = document.querySelector(".image-viewer");
-
-    const bigImage = document.getElementById("bigImage");
-
-
-    if(!viewer || !bigImage) return;
-
-
-
-    bigImage.src = img.src;
-
-
-    viewer.style.display="flex";
-
-
-}
-
-
-
-
-function closeImage(){
-
-
-    const viewer = document.querySelector(".image-viewer");
-
-
-    if(viewer){
-
-        viewer.style.display="none";
-
-    }
-
 
 }
