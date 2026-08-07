@@ -197,18 +197,14 @@ transform:translateY(0);
 
 
 .hero h1{
-
-font-size:70px;
-
-font-weight:900;
-
-margin-bottom:10px;
-
-background:linear-gradient(90deg,var(--primary),var(--secondary));
-
--webkit-background-clip:text;
-
--webkit-text-fill-color:transparent;
+    font-size:70px;
+    font-weight:900;
+    margin-bottom:10px;
+    color:#4CC9F0;
+    -webkit-text-fill-color:#4CC9F0;
+    text-shadow:
+0 0 10px rgba(76,201,240,.5),
+0 0 25px rgba(76,201,240,.3);
 
 }
 
