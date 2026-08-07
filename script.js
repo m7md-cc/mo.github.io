@@ -5,70 +5,75 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const hero = document.querySelector(".hero");
 
-    if (hero) {
+    if(hero){
 
         hero.style.opacity = "0";
-        hero.style.transform = "translateY(50px)";
+        hero.style.transform = "translateY(40px)";
 
-        setTimeout(() => {
+        setTimeout(()=>{
 
             hero.style.transition =
-                "opacity 1.2s ease, transform 1.2s ease";
+            "1s ease";
 
-            hero.style.opacity = "1";
-            hero.style.transform = "translateY(0)";
+            hero.style.opacity="1";
+            hero.style.transform="translateY(0)";
 
-        }, 300);
+        },300);
 
     }
 
 
 
+
     // ================= Typing Effect =================
+
 
     const typing = document.getElementById("typing");
 
-    const text = "Mohamed Hassan";
 
+    if(typing){
 
-    if (typing) {
-
-        typing.textContent = "";
+        const text = "Mohamed Hassan";
 
         let index = 0;
 
 
-        function typeWriter() {
+        function write(){
 
-            if (index < text.length) {
+            if(index < text.length){
 
                 typing.textContent += text[index];
 
                 index++;
 
-                setTimeout(typeWriter,120);
+                setTimeout(write,120);
 
             }
 
         }
 
 
-        typeWriter();
+        write();
 
     }
 
 
 
 
+
+
     // ================= Cards Animation =================
 
-    const cards = document.querySelectorAll(".card");
+
+    const cards =
+    document.querySelectorAll(".card");
 
 
-    if (cards.length) {
+    if(cards.length){
 
 
-        const observer = new IntersectionObserver((entries)=>{
+        const observer =
+        new IntersectionObserver(entries=>{
 
 
             entries.forEach(entry=>{
@@ -76,10 +81,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 if(entry.isIntersecting){
 
-                    entry.target.style.opacity="1";
 
-                    entry.target.style.transform=
-                    "translateY(0)";
+                    entry.target.classList.add("show");
+
 
                 }
 
@@ -98,16 +102,6 @@ document.addEventListener("DOMContentLoaded", () => {
         cards.forEach(card=>{
 
 
-            card.style.opacity="0";
-
-            card.style.transform=
-            "translateY(60px)";
-
-
-            card.style.transition=
-            "all .8s ease";
-
-
             observer.observe(card);
 
 
@@ -120,17 +114,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-    // ================= Profile Scroll =================
+
+
+    // ================= Profile Move =================
 
 
     const profile =
     document.querySelector(".hero-profile");
 
 
+
     if(profile){
 
 
-        function updateProfile(){
+        window.addEventListener("scroll",()=>{
 
 
             if(window.scrollY > 80){
@@ -146,18 +143,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
 
-        }
-
-
-
-        window.addEventListener(
-            "scroll",
-            updateProfile,
-            {passive:true}
-        );
-
-
-        updateProfile();
+        });
 
 
     }
@@ -167,15 +153,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-    // ================= Music Player =================
+
+
+    // ================= Music =================
 
 
     const music =
     document.getElementById("bgMusic");
-
-
-    const widget =
-    document.querySelector(".music-widget");
 
 
     const play =
@@ -190,59 +174,17 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("musicStatus");
 
 
+    const widget =
+    document.querySelector(".music-widget");
 
 
-    if(
-        music &&
-        widget &&
-        play &&
-        progress
-    ){
+
+
+    if(music && play){
+
 
 
         music.volume=.5;
-
-
-
-        function playing(){
-
-
-            widget.classList.add("playing");
-
-
-            play.innerHTML=
-            '<i class="fas fa-pause"></i>';
-
-
-
-            if(status)
-            status.textContent="يعمل الآن";
-
-
-        }
-
-
-
-
-        function paused(){
-
-
-            widget.classList.remove("playing");
-
-
-            play.innerHTML=
-            '<i class="fas fa-play"></i>';
-
-
-
-            if(status)
-            status.textContent="متوقف";
-
-
-        }
-
-
-
 
 
 
@@ -253,13 +195,20 @@ document.addEventListener("DOMContentLoaded", () => {
             if(music.paused){
 
 
-
                 music.play()
 
                 .then(()=>{
 
 
-                    playing();
+                    play.innerHTML =
+                    '<i class="fas fa-pause"></i>';
+
+
+                    widget.classList.add("playing");
+
+
+                    if(status)
+                    status.textContent="يعمل الآن";
 
 
                 })
@@ -268,7 +217,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
                     if(status)
-                    status.textContent="اضغط تشغيل";
+                    status.textContent="خطأ في تشغيل الصوت";
 
 
                 });
@@ -277,18 +226,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
             }
 
-
             else{
 
 
                 music.pause();
 
 
-                paused();
+                play.innerHTML =
+                '<i class="fas fa-play"></i>';
+
+
+                widget.classList.remove("playing");
+
+
+                if(status)
+                status.textContent="متوقف";
 
 
             }
-
 
 
         };
@@ -298,17 +253,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-        music.addEventListener(
-            "timeupdate",
-            ()=>{
+
+        music.addEventListener("timeupdate",()=>{
 
 
-                if(
-                    !music.duration ||
-                    !isFinite(music.duration)
-                )
-                return;
-
+            if(music.duration){
 
 
                 progress.value =
@@ -316,9 +265,43 @@ document.addEventListener("DOMContentLoaded", () => {
                 music.duration)*100;
 
 
+            }
+
+
+        });
+
+
+
+
+
+
+
+        progress.addEventListener("input",()=>{
+
+
+            if(music.duration){
+
+
+                music.currentTime =
+                (progress.value/100)
+                *music.duration;
+
 
             }
-        );
+
+
+        });
+
+
+
+
+
+    }
+
+
+
+
+});
 
 
 
@@ -326,10 +309,129 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-        progress.addEventListener(
-            "input",
-            ()=>{
 
 
-                if(
-                    !
+// ================= Menu =================
+
+
+function toggleMenu(){
+
+
+    const menu =
+    document.getElementById("menu");
+
+
+    if(menu){
+
+        menu.classList.toggle("show");
+
+    }
+
+}
+
+
+
+
+
+
+
+// ================= Music Widget =================
+
+
+function toggleMusicWidget(){
+
+
+    const widget =
+    document.querySelector(".music-widget");
+
+
+    if(widget){
+
+        widget.classList.toggle("open");
+
+    }
+
+
+}
+
+
+
+
+
+
+
+// ================= Image Viewer =================
+
+
+
+function openImage(img){
+
+
+    const viewer =
+    document.getElementById("imageViewer");
+
+
+    const bigImage =
+    document.getElementById("bigImage");
+
+
+
+    if(!viewer || !bigImage)
+    return;
+
+
+
+    bigImage.src = img.src;
+
+
+    viewer.style.display="flex";
+
+
+    document.body.style.overflow="hidden";
+
+
+}
+
+
+
+
+
+
+
+function closeImage(){
+
+
+
+    const viewer =
+    document.getElementById("imageViewer");
+
+
+
+    if(viewer){
+
+        viewer.style.display="none";
+
+    }
+
+
+    document.body.style.overflow="";
+
+
+}
+
+
+
+
+
+
+document.addEventListener("keydown",(e)=>{
+
+
+    if(e.key==="Escape"){
+
+        closeImage();
+
+    }
+
+
+});
