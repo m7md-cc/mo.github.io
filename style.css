@@ -1026,7 +1026,42 @@ transform:none !important;
 
 }
 
+/* ================= Mobile Profile Scroll Fix ================= */
 
+@media(max-width:768px){
+
+    .hero-profile{
+        width:100%;
+        max-width:100%;
+        overflow:visible;
+    }
+
+    .hero-profile.move-left{
+        width:100%;
+        max-width:100%;
+        gap:12px;
+        justify-content:center;
+        flex-direction:row;
+        transform:translateX(-30px);
+    }
+
+    .hero-profile.move-left .profile-image{
+        width:95px;
+        height:110px;
+        flex-shrink:0;
+    }
+
+    .hero-profile.move-left h1{
+        font-size:24px;
+        line-height:1.2;
+        margin:0;
+        max-width:calc(100vw - 140px);
+        white-space:nowrap;
+        overflow:hidden;
+        text-overflow:clip;
+    }
+
+}
 /* ================= Contact WhatsApp ================= */
 
 .contact-whatsapp{
