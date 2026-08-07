@@ -81,32 +81,67 @@ position:relative;
 }
 
 
+/* ================= Hero Profile Animation ================= */
+
 .hero-profile{
+
     display:flex;
     flex-direction:column;
     align-items:center;
     gap:20px;
-    transition:transform .8s ease;
-    will-change:transform;
+
 }
 
 
-.hero-profile.scrolled{
+.hero-profile.move-left{
+
     flex-direction:row;
+
     justify-content:center;
+
     align-items:center;
+
     gap:30px;
+
+    animation:moveProfile .7s cubic-bezier(.22,1,.36,1) forwards;
+
 }
 
 
-.hero-profile.scrolled .profile-image{
+
+.hero-profile.move-left .profile-image{
+
     width:170px;
+
     height:190px;
+
 }
 
 
-.hero-profile.scrolled h1{
+
+.hero-profile.move-left h1{
+
     font-size:48px;
+
+}
+
+
+
+@keyframes moveProfile{
+
+from{
+
+    transform:translateX(0);
+
+}
+
+
+to{
+
+    transform:translateX(-120px);
+
+}
+
 } 
 
 
