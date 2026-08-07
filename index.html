@@ -179,6 +179,48 @@ WhatsApp
 
 </section>
 
+<!-- ================= Music Widget ================= --><div class="music-widget"><audio id="bgMusic" src="music/song.mp3" preload="auto" loop></audio>
+
+<button class="music-toggle" onclick="toggleMusicWidget()" aria-label="Music">
+    <i class="fas fa-music"></i>
+</button>
+
+<div class="music-player">
+
+    <div class="music-info">
+
+        <div class="music-icon">
+            <i class="fas fa-music"></i>
+        </div>
+
+        <div class="music-details">
+            <span class="music-title">My Song</span>
+            <span class="music-status" id="musicStatus">متوقف</span>
+        </div>
+
+    </div>
+
+    <div class="music-controls">
+
+        <button onclick="toggleMusic()" id="musicPlay">
+            <i class="fas fa-play"></i>
+        </button>
+
+        <input
+            type="range"
+            id="musicProgress"
+            min="0"
+            max="100"
+            value="0"
+        >
+
+    </div>
+
+</div>
+
+</div>
+<!-- ================= End Music Widget ================= -->
+   
 <script src="script.js"></script>
 
 </body>
