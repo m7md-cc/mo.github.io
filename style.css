@@ -86,16 +86,6 @@ position:relative;
 .hero-profile{
 
     display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:20px;
-
-}
-
-
-.hero-profile{
-
-    display:flex;
 
     flex-direction:column;
 
@@ -107,39 +97,6 @@ position:relative;
 
 }
 
-
-
-.hero-profile.scrolled{
-
-    flex-direction:row;
-
-    justify-content:center;
-
-    align-items:center;
-
-    gap:30px;
-
-    transform:translateX(-80px);
-
-}
-
-
-
-.hero-profile.scrolled .profile-image{
-
-    width:170px;
-
-    height:190px;
-
-}
-
-
-
-.hero-profile.scrolled h1{
-
-    font-size:48px;
-
-} 
 
 
 .profile-image{
@@ -887,40 +844,6 @@ min-height:100vh;
 
 
 
-.hero-profile{
-
-gap:15px;
-
-}
-
-
-
-.profile-image{
-
-width:220px;
-
-height:250px;
-
-}
-
-
-
-.hero h1{
-
-font-size:38px;
-
-}
-
-
-
-#typing{
-
-min-height:50px;
-
-}
-
-
-
 .hero h2{
 
 font-size:20px;
@@ -982,86 +905,6 @@ transform:none !important;
 }
 
 
-
-/* ===== Hero Scroll Mobile Fix ===== */
-
-
-.hero-profile.scrolled{
-
-    gap:10px;
-
-    transform:translateX(-20px);
-
-}
-
-
-
-.hero-profile.scrolled .profile-image{
-
-    width:90px;
-
-    height:110px;
-
-}
-
-
-
-.hero-profile.scrolled h1{
-
-    font-size:clamp(18px,6vw,28px);
-
-    white-space:nowrap;
-
-}
-
-
-
-.hero-profile.scrolled #typing{
-
-    font-size:inherit;
-
-}
-
-
-
-}
-
-/* ================= Mobile Profile Scroll Fix ================= */
-
-@media(max-width:768px){
-
-    .hero-profile{
-        width:100%;
-        max-width:100%;
-        overflow:visible;
-    }
-
-    .hero-profile.move-left{
-        width:100%;
-        max-width:100%;
-        gap:12px;
-        justify-content:center;
-        flex-direction:row;
-        transform:translateX(-30px);
-    }
-
-    .hero-profile.move-left .profile-image{
-        width:95px;
-        height:110px;
-        flex-shrink:0;
-    }
-
-    .hero-profile.move-left h1{
-        font-size:24px;
-        line-height:1.2;
-        margin:0;
-        max-width:calc(100vw - 140px);
-        white-space:nowrap;
-        overflow:hidden;
-        text-overflow:clip;
-    }
-
-}
 /* ================= Contact WhatsApp ================= */
 
 .contact-whatsapp{
@@ -1391,14 +1234,6 @@ transform:none !important;
 
 }
 
-/* ================= Mobile Width Fix ================= */
-
-html,
-body{
-    width:100%;
-    max-width:100%;
-    overflow-x:hidden;
-}
 
 .hero{
     width:100%;
