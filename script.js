@@ -68,9 +68,7 @@ const observer = new IntersectionObserver((entries) => {
     });
 
 }, {
-
     threshold: 0.2
-
 });
 
 
@@ -96,11 +94,11 @@ const musicStatus = document.getElementById("musicStatus");
 
 if (music && musicWidget && musicPlay && musicProgress) {
 
-
-    // محاولة تشغيل الأغنية تلقائيًا
-
+    // مستوى الصوت
     music.volume = 0.5;
 
+
+    // محاولة التشغيل التلقائي
     const autoPlayMusic = () => {
 
         music.play().then(() => {
@@ -116,8 +114,6 @@ if (music && musicWidget && musicPlay && musicProgress) {
 
         }).catch(() => {
 
-            // المتصفح منع التشغيل التلقائي
-
             if (musicStatus) {
                 musicStatus.textContent = "اضغط تشغيل";
             }
@@ -130,22 +126,24 @@ if (music && musicWidget && musicPlay && musicProgress) {
     autoPlayMusic();
 
 
-    // تشغيل / إيقاف
+    // تشغيل / إيقاف الموسيقى
 
     window.toggleMusic = function () {
 
         if (music.paused) {
 
-            music.play();
+            music.play().then(() => {
 
-            musicWidget.classList.add("playing");
+                musicWidget.classList.add("playing");
 
-            musicPlay.innerHTML =
-                '<i class="fas fa-pause"></i>';
+                musicPlay.innerHTML =
+                    '<i class="fas fa-pause"></i>';
 
-            if (musicStatus) {
-                musicStatus.textContent = "يعمل الآن";
-            }
+                if (musicStatus) {
+                    musicStatus.textContent = "يعمل الآن";
+                }
+
+            });
 
         } else {
 
@@ -177,7 +175,7 @@ if (music && musicWidget && musicPlay && musicProgress) {
     });
 
 
-    // التحكم من شريط التقدم
+    // التحكم في شريط التقدم
 
     musicProgress.addEventListener("input", () => {
 
@@ -189,7 +187,7 @@ if (music && musicWidget && musicPlay && musicProgress) {
     });
 
 
-    // عند انتهاء الأغنية
+    // انتهاء الأغنية
 
     music.addEventListener("ended", () => {
 
@@ -214,16 +212,36 @@ window.addEventListener("scroll", () => {
 
 const profile = document.querySelector(".hero-profile");
 
-if (!profile) return;
+const image = document.querySelector(".profile-image");
+
+const name = document.getElementById("typing");
+
+if (!profile || !image || !name) return;
 
 
 if (window.scrollY > 80) {
 
-    profile.classList.add("move-left");
+    profile.classList.add("scrolled");
+
+    // تحريك البروفايل بسرعة إلى اليسار
+    profile.style.transform = "translateX(-120px)";
+
+    // تصغير الصورة
+    image.style.transform = "scale(.85)";
+
+    // تقريب الاسم من الصورة
+    name.style.transform = "translateX(15px)";
 
 } else {
 
-    profile.classList.remove("move-left");
+    profile.classList.remove("scrolled");
+
+    // الرجوع للوضع الأصلي
+    profile.style.transform = "translateX(0)";
+
+    image.style.transform = "scale(1)";
+
+    name.style.transform = "translateX(0)";
 
 }
 
@@ -262,6 +280,7 @@ if (widget) {
 function openImage(img) {
 
 const viewer = document.querySelector(".image-viewer");
+
 const bigImage = document.getElementById("bigImage");
 
 if (!viewer || !bigImage) return;
@@ -283,4 +302,4 @@ if (viewer) {
 
 }
 
-}
+                }
