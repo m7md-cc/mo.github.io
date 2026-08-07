@@ -1074,3 +1074,284 @@ transform:none !important;
     box-shadow:
     0 12px 30px rgba(37,211,102,.4);
 }
+
+/* ================= Music Widget ================= */
+
+.music-widget{
+    position:fixed;
+    bottom:25px;
+    left:25px;
+    z-index:10000;
+
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+
+/* زر الموسيقى العائم */
+
+.music-toggle{
+    width:55px;
+    height:55px;
+
+    border:none;
+    border-radius:50%;
+
+    background:#4CC9F0;
+    color:#09090f;
+
+    font-size:21px;
+
+    cursor:pointer;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    box-shadow:
+    0 0 15px rgba(76,201,240,.45),
+    0 0 35px rgba(76,201,240,.2);
+
+    transition:.3s ease;
+}
+
+
+.music-toggle:hover{
+    transform:scale(1.1);
+
+    box-shadow:
+    0 0 20px #4CC9F0,
+    0 0 45px rgba(76,201,240,.4);
+}
+
+
+/* ================= Music Player ================= */
+
+.music-player{
+    width:280px;
+
+    padding:15px;
+
+    background:rgba(17,17,27,.94);
+
+    backdrop-filter:blur(15px);
+
+    border:1px solid rgba(76,201,240,.3);
+
+    border-radius:18px;
+
+    box-shadow:
+    0 10px 35px rgba(0,0,0,.4),
+    0 0 25px rgba(76,201,240,.12);
+
+    opacity:0;
+
+    transform:translateX(-20px);
+
+    pointer-events:none;
+
+    transition:.35s ease;
+}
+
+
+/* عند فتح الـ Widget */
+
+.music-widget.open .music-player{
+
+    opacity:1;
+
+    transform:translateX(0);
+
+    pointer-events:auto;
+
+}
+
+
+/* ================= Music Info ================= */
+
+.music-info{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+
+.music-icon{
+
+    width:45px;
+    height:45px;
+
+    border-radius:12px;
+
+    background:rgba(76,201,240,.12);
+
+    color:#4CC9F0;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:20px;
+}
+
+
+.music-details{
+
+    display:flex;
+    flex-direction:column;
+
+    min-width:0;
+}
+
+
+.music-title{
+
+    color:#fff;
+
+    font-size:15px;
+
+    font-weight:700;
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+}
+
+
+.music-status{
+
+    color:rgba(255,255,255,.55);
+
+    font-size:12px;
+
+    margin-top:2px;
+}
+
+
+/* ================= Controls ================= */
+
+.music-controls{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    margin-top:15px;
+}
+
+
+.music-controls button{
+
+    width:40px;
+    height:40px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#4CC9F0;
+
+    color:#09090f;
+
+    cursor:pointer;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    flex-shrink:0;
+
+    transition:.3s ease;
+}
+
+
+.music-controls button:hover{
+
+    transform:scale(1.08);
+
+    box-shadow:
+    0 0 15px rgba(76,201,240,.5);
+}
+
+
+/* ================= Progress ================= */
+
+#musicProgress{
+
+    flex:1;
+
+    height:5px;
+
+    accent-color:#4CC9F0;
+
+    cursor:pointer;
+}
+
+
+/* ================= Playing Animation ================= */
+
+.music-widget.playing .music-toggle{
+
+    animation:musicPulse 1.5s infinite;
+}
+
+
+@keyframes musicPulse{
+
+    0%,100%{
+        box-shadow:
+        0 0 15px rgba(76,201,240,.45);
+    }
+
+    50%{
+        box-shadow:
+        0 0 25px #4CC9F0,
+        0 0 45px rgba(76,201,240,.35);
+    }
+
+}
+
+
+/* ================= Mobile ================= */
+
+@media(max-width:768px){
+
+    .music-widget{
+
+        bottom:18px;
+
+        left:18px;
+
+    }
+
+
+    .music-toggle{
+
+        width:50px;
+        height:50px;
+
+        font-size:19px;
+
+    }
+
+
+    .music-player{
+
+        position:absolute;
+
+        bottom:62px;
+
+        left:0;
+
+        width:250px;
+
+    }
+
+}
