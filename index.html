@@ -467,70 +467,26 @@ WhatsApp
 
 <section id="gallery">
 
-
-
-<h2>
-
-الصور
-
-</h2>
-
-
-
-
+<h2>الصور</h2>
 
 <div class="gallery">
 
+<img src="images/image1.jpg" alt="Image 1" onclick="openImage(this)">
 
+<img src="images/image2.jpg" alt="Image 2" onclick="openImage(this)">
 
-
-
-<img
-
-src="images/image1.jpg"
-
-alt="Gallery Image 1"
-
-onclick="openImage(this)"
-
->
-
-
-
-
-
-
-<img
-
-src="images/image2.jpg"
-
-alt="Gallery Image 2"
-
-onclick="openImage(this)"
-
->
-
-
-
-
-
-
-<img
-
-src="images/image3.jpg"
-
-alt="Gallery Image 3"
-
-onclick="openImage(this)"
-
->
-
-
-
-
+<img src="images/image3.jpg" alt="Image 3" onclick="openImage(this)">
 
 </div>
 
+</section>
+
+
+<div class="image-viewer" id="imageViewer" onclick="closeImage()">
+
+    <img id="bigImage" alt="Big Image" onclick="event.stopPropagation()">
+
+</div>
 
 
 </section>
