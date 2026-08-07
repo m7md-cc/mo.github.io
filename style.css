@@ -118,13 +118,14 @@ nav a:hover{
 /* ================= Profile Scroll ================= */
 
 .hero-profile.move-left{
-    flex-direction:row;
+    flex-direction:row-reverse;
+
     justify-content:center;
     align-items:center;
 
-    gap:30px;
+    gap:25px;
 
-    transform:translateX(-120px);
+    transform:none;
 }
 
 
@@ -153,9 +154,14 @@ nav a:hover{
     will-change:transform;
 }
 
+
+/* ================= Profile Image After Scroll ================= */
+
 .hero-profile.move-left .profile-image{
     width:170px;
     height:190px;
+
+    flex-shrink:0;
 }
 
 .profile-image:hover{
@@ -199,9 +205,23 @@ nav a:hover{
     max-width:100%;
 }
 
+
+/* ================= Name After Scroll ================= */
+
 .hero-profile.move-left h1{
     font-size:48px;
+
     margin:0;
+
+    line-height:1.2;
+
+    white-space:nowrap;
+
+    max-width:calc(100% - 195px);
+
+    overflow:hidden;
+
+    text-overflow:clip;
 }
 
 
@@ -953,11 +973,6 @@ section h2{
         max-width:100%;
 
         display:flex;
-
-        /*
-        الصورة على اليمين
-        والاسم بجانبها
-        */
 
         flex-direction:row-reverse;
 
