@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+
     // ================= Hero Animation =================
 
     const hero = document.querySelector(".hero");
@@ -11,7 +12,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         setTimeout(() => {
 
-            hero.style.transition = "opacity 1.2s ease, transform 1.2s ease";
+            hero.style.transition =
+                "opacity 1.2s ease, transform 1.2s ease";
+
             hero.style.opacity = "1";
             hero.style.transform = "translateY(0)";
 
@@ -20,520 +23,313 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
+
     // ================= Typing Effect =================
 
     const typing = document.getElementById("typing");
+
     const text = "Mohamed Hassan";
+
 
     if (typing) {
 
         typing.textContent = "";
 
-        let i = 0;
+        let index = 0;
 
-        function type() {
 
-            if (i < text.length) {
+        function typeWriter() {
 
-                typing.textContent += text.charAt(i);
+            if (index < text.length) {
 
-                i++;
+                typing.textContent += text[index];
 
-                setTimeout(type, 120);
+                index++;
+
+                setTimeout(typeWriter,120);
 
             }
 
         }
 
-        type();
+
+        typeWriter();
 
     }
+
+
 
 
     // ================= Cards Animation =================
 
     const cards = document.querySelectorAll(".card");
 
+
     if (cards.length) {
 
-        const observer = new IntersectionObserver((entries) => {
 
-            entries.forEach(entry => {
+        const observer = new IntersectionObserver((entries)=>{
 
-                if (entry.isIntersecting) {
 
-                    entry.target.style.opacity = "1";
-                    entry.target.style.transform = "translateY(0)";
+            entries.forEach(entry=>{
+
+
+                if(entry.isIntersecting){
+
+                    entry.target.style.opacity="1";
+
+                    entry.target.style.transform=
+                    "translateY(0)";
 
                 }
 
+
             });
 
-        }, {
-            threshold: 0.2
+
+        },{
+
+            threshold:.2
+
         });
 
 
-        cards.forEach(card => {
 
-            card.style.opacity = "0";
-            card.style.transform = "translateY(60px)";
-            card.style.transition = "opacity .8s ease, transform .8s ease";
+        cards.forEach(card=>{
+
+
+            card.style.opacity="0";
+
+            card.style.transform=
+            "translateY(60px)";
+
+
+            card.style.transition=
+            "all .8s ease";
+
 
             observer.observe(card);
 
+
         });
+
 
     }
 
 
-    // ================= Profile Scroll Animation =================
 
-    const profile = document.querySelector(".hero-profile");
 
-    if (profile) {
 
-        let lastState = false;
+    // ================= Profile Scroll =================
 
-        function updateProfile() {
 
-            const shouldMove = window.scrollY > 80;
+    const profile =
+    document.querySelector(".hero-profile");
 
-            if (shouldMove === lastState) return;
 
-            lastState = shouldMove;
+    if(profile){
 
-            if (shouldMove) {
 
-                /*
-                 * مهم جداً:
-                 * نستخدم move-left الموجود في CSS
-                 * ولا نستخدم transform مباشرة من JavaScript
-                 */
+        function updateProfile(){
+
+
+            if(window.scrollY > 80){
 
                 profile.classList.add("move-left");
 
-            } else {
+            }
+
+            else{
 
                 profile.classList.remove("move-left");
 
             }
 
+
         }
 
-        window.addEventListener("scroll", updateProfile, {
-            passive: true
-        });
 
-        // تشغيل الحالة الصحيحة عند تحميل الصفحة
+
+        window.addEventListener(
+            "scroll",
+            updateProfile,
+            {passive:true}
+        );
+
+
         updateProfile();
 
+
     }
+
+
+
+
 
 
     // ================= Music Player =================
 
-    const music = document.getElementById("bgMusic");
-    const musicWidget = document.querySelector(".music-widget");
-    const musicPlay = document.getElementById("musicPlay");
-    const musicProgress = document.getElementById("musicProgress");
-    const musicStatus = document.getElementById("musicStatus");
+
+    const music =
+    document.getElementById("bgMusic");
 
 
-    if (music && musicWidget && musicPlay && musicProgress) {
+    const widget =
+    document.querySelector(".music-widget");
 
-        music.volume = 0.5;
+
+    const play =
+    document.getElementById("musicPlay");
 
 
-        // ================= تحديث واجهة الموسيقى =================
+    const progress =
+    document.getElementById("musicProgress");
 
-        function setPlayingState() {
 
-            musicWidget.classList.add("playing");
+    const status =
+    document.getElementById("musicStatus");
 
-            musicPlay.innerHTML =
-                '<i class="fas fa-pause"></i>';
 
-            if (musicStatus) {
-                musicStatus.textContent = "يعمل الآن";
-            }
+
+
+    if(
+        music &&
+        widget &&
+        play &&
+        progress
+    ){
+
+
+        music.volume=.5;
+
+
+
+        function playing(){
+
+
+            widget.classList.add("playing");
+
+
+            play.innerHTML=
+            '<i class="fas fa-pause"></i>';
+
+
+
+            if(status)
+            status.textContent="يعمل الآن";
+
 
         }
 
 
-        function setPausedState() {
 
-            musicWidget.classList.remove("playing");
 
-            musicPlay.innerHTML =
-                '<i class="fas fa-play"></i>';
+        function paused(){
 
-            if (musicStatus) {
-                musicStatus.textContent = "متوقف";
-            }
+
+            widget.classList.remove("playing");
+
+
+            play.innerHTML=
+            '<i class="fas fa-play"></i>';
+
+
+
+            if(status)
+            status.textContent="متوقف";
+
 
         }
 
 
-        // ================= التشغيل التلقائي =================
 
-        const autoPlayMusic = () => {
 
-            music.play()
-                .then(() => {
 
-                    setPlayingState();
+
+        window.toggleMusic=function(){
+
+
+
+            if(music.paused){
+
+
+
+                music.play()
+
+                .then(()=>{
+
+
+                    playing();
+
 
                 })
-                .catch(() => {
 
-                    if (musicStatus) {
-                        musicStatus.textContent = "اضغط تشغيل";
-                    }
+                .catch(()=>{
+
+
+                    if(status)
+                    status.textContent="اضغط تشغيل";
+
 
                 });
 
-        };
 
 
-        autoPlayMusic();
+            }
 
 
-        // ================= تشغيل / إيقاف الموسيقى =================
+            else{
 
-        window.toggleMusic = function () {
-
-            if (music.paused) {
-
-                music.play()
-                    .then(() => {
-
-                        setPlayingState();
-
-                    })
-                    .catch(() => {
-
-                        if (musicStatus) {
-                            musicStatus.textContent = "اضغط تشغيل";
-                        }
-
-                    });
-
-            } else {
 
                 music.pause();
 
-                setPausedState();
+
+                paused();
+
 
             }
+
+
 
         };
 
 
-        // ================= تحديث شريط التقدم =================
-
-        music.addEventListener("timeupdate", () => {
-
-            if (!music.duration || !isFinite(music.duration)) return;
-
-            musicProgress.value =
-                (music.currentTime / music.duration) * 100;
-
-        });
 
 
-        // ================= التحكم في شريط التقدم =================
-
-        musicProgress.addEventListener("input", () => {
-
-            if (!music.duration || !isFinite(music.duration)) return;
-
-            music.currentTime =
-                (musicProgress.value / 100) * music.duration;
-
-        });
 
 
-        // ================= عند انتهاء الأغنية =================
-
-        music.addEventListener("ended", () => {
-
-            setPausedState();
-
-            musicProgress.value = 0;
-
-        });
-
-    }
-
-});
+        music.addEventListener(
+            "timeupdate",
+            ()=>{
 
 
-// ================= Mobile Menu =================
-
-function toggleMenu() {
-
-    const menu = document.getElementById("menu");
-
-    if (menu) {
-
-        menu.classList.toggle("show");
-
-    }
-
-}
+                if(
+                    !music.duration ||
+                    !isFinite(music.duration)
+                )
+                return;
 
 
-// ================= Music Widget =================
 
-function toggleMusicWidget() {
-
-    const widget = document.querySelector(".music-widget");
-
-    if (widget) {
-
-        widget.classList.toggle("open");
-
-    }
-
-}
+                progress.value =
+                (music.currentTime /
+                music.duration)*100;
 
 
-// ================= Image Viewer =================
 
-function openImage(img) {
-
-    const viewer = document.querySelector(".image-viewer");
-    const bigImage = document.getElementById("bigImage");
-
-    if (!viewer || !bigImage || !img) return;
-
-    bigImage.src = img.src;
-
-    viewer.style.display = "flex";
-
-    document.body.style.overflow = "hidden";
-
-}
-
-
-// ================= Close Image =================
-
-function closeImage() {
-
-    const viewer = document.querySelector(".image-viewer");
-
-    if (viewer) {
-
-        viewer.style.display = "none";
-
-    }
-
-    document.body.style.overflow = "";
-
-}
-
-
-// ================= Close Image With ESC =================
-
-document.addEventListener("keydown", (event) => {
-
-    if (event.key === "Escape") {
-
-        closeImage();
-
-    }
-
-});            }
-
-        }).catch(() => {
-
-            if (musicStatus) {
-                musicStatus.textContent = "اضغط تشغيل";
             }
+        );
 
-        });
 
-    };
 
 
-    autoPlayMusic();
 
 
-    // تشغيل / إيقاف الموسيقى
 
-    window.toggleMusic = function () {
+        progress.addEventListener(
+            "input",
+            ()=>{
 
-        if (music.paused) {
 
-            music.play().then(() => {
-
-                musicWidget.classList.add("playing");
-
-                musicPlay.innerHTML =
-                    '<i class="fas fa-pause"></i>';
-
-                if (musicStatus) {
-                    musicStatus.textContent = "يعمل الآن";
-                }
-
-            });
-
-        } else {
-
-            music.pause();
-
-            musicWidget.classList.remove("playing");
-
-            musicPlay.innerHTML =
-                '<i class="fas fa-play"></i>';
-
-            if (musicStatus) {
-                musicStatus.textContent = "متوقف";
-            }
-
-        }
-
-    };
-
-
-    // تحديث شريط التقدم
-
-    music.addEventListener("timeupdate", () => {
-
-        if (!music.duration) return;
-
-        musicProgress.value =
-            (music.currentTime / music.duration) * 100;
-
-    });
-
-
-    // التحكم في شريط التقدم
-
-    musicProgress.addEventListener("input", () => {
-
-        if (!music.duration) return;
-
-        music.currentTime =
-            (musicProgress.value / 100) * music.duration;
-
-    });
-
-
-    // انتهاء الأغنية
-
-    music.addEventListener("ended", () => {
-
-        musicWidget.classList.remove("playing");
-
-        musicPlay.innerHTML =
-            '<i class="fas fa-play"></i>';
-
-        if (musicStatus) {
-            musicStatus.textContent = "متوقف";
-        }
-
-    });
-
-}
-
-});
-
-// ================= Profile Scroll Animation =================
-
-window.addEventListener("scroll", () => {
-
-const profile = document.querySelector(".hero-profile");
-
-const image = document.querySelector(".profile-image");
-
-const name = document.getElementById("typing");
-
-if (!profile || !image || !name) return;
-
-
-if (window.scrollY > 80) {
-
-    profile.classList.add("scrolled");
-
-    // تحريك البروفايل بسرعة إلى اليسار
-    profile.style.transform = "translateX(-120px)";
-
-    // تصغير الصورة
-    image.style.transform = "scale(.85)";
-
-    // تقريب الاسم من الصورة
-    name.style.transform = "translateX(15px)";
-
-} else {
-
-    profile.classList.remove("scrolled");
-
-    // الرجوع للوضع الأصلي
-    profile.style.transform = "translateX(0)";
-
-    image.style.transform = "scale(1)";
-
-    name.style.transform = "translateX(0)";
-
-}
-
-});
-
-// ================= Mobile Menu =================
-
-function toggleMenu() {
-
-const menu = document.getElementById("menu");
-
-if (menu) {
-
-    menu.classList.toggle("show");
-
-}
-
-}
-
-// ================= Music Widget =================
-
-function toggleMusicWidget() {
-
-const widget = document.querySelector(".music-widget");
-
-if (widget) {
-
-    widget.classList.toggle("open");
-
-}
-
-}
-
-// ================= Image Viewer =================
-
-function openImage(img) {
-
-const viewer = document.querySelector(".image-viewer");
-
-const bigImage = document.getElementById("bigImage");
-
-if (!viewer || !bigImage) return;
-
-
-bigImage.src = img.src;
-
-viewer.style.display = "flex";
-
-}
-
-function closeImage() {
-
-const viewer = document.querySelector(".image-viewer");
-
-if (viewer) {
-
-    viewer.style.display = "none";
-
-}
-
-                }
+                if(
+                    !
