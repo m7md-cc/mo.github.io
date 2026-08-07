@@ -1025,3 +1025,52 @@ transform:none !important;
 
 
 }
+
+
+/* ================= Contact WhatsApp ================= */
+
+.contact-whatsapp{
+    display:flex;
+    justify-content:center;
+    margin-top:25px;
+}
+
+.contact-whatsapp a{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+
+    padding:14px 30px;
+
+    background:#25D366;
+    color:#fff;
+
+    text-decoration:none;
+
+    border-radius:50px;
+
+    font-size:17px;
+    font-weight:700;
+
+    box-shadow:
+    0 8px 25px rgba(37,211,102,.25);
+
+    transition:
+    transform .3s ease,
+    background .3s ease,
+    box-shadow .3s ease;
+}
+
+.contact-whatsapp a i{
+    font-size:24px;
+}
+
+.contact-whatsapp a:hover{
+    background:#20bd5a;
+
+    transform:translateY(-5px);
+
+    box-shadow:
+    0 12px 30px rgba(37,211,102,.4);
+}
